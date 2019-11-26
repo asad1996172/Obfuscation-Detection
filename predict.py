@@ -15,12 +15,19 @@ def evaluate_text(text, dataset_type, language_model, language_model_output_type
     :return: a tuple containing three things (prediction, probability_obfuscated, probability_evaded)
     """
 
+    features = utils.extract_features(text, language_model, language_model_output_type, feature_type)
+
     req_model_path = 'models/' + '_'.join(
         [dataset_type, language_model, language_model_output_type, classifier, feature_type])
     clf = utils.load_model(req_model_path)
-    features = utils.extract_features(text, language_model, language_model_output_type, feature_type)
-    print(features)
-    print(len(features))
+    prediction = (clf.predict([features]))[0]
+    if prediction == 0:
+        logging.warning('The input text is ORIGINAL ')
+        return "Original"
+    else:
+        logging.warning('The input text is OBFUSCATED ')
+        return "Obfuscated"
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -65,6 +72,7 @@ def main():
         text = utils.read_file(file_path)
 
     evaluate_text(text, dataset_type, language_model, language_model_output_type, feature_type, classifier)
+
 
 if __name__ == '__main__':
     main()

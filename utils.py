@@ -9,6 +9,7 @@ from keras.applications.vgg19 import preprocess_input
 from keras.models import Model
 import numpy as np
 import logging
+import sys
 
 def get_ranks_and_probs(payloads_list):
     """
@@ -93,10 +94,23 @@ def extract_features(text, language_model, output_type, feature_type):
         ranks_create_plots(sorted(ranks, reverse=True), max_vocab_size, 'dummy.png')
 
     if 'vgg' in feature_type:
-        features = get_VGG19_features('dummy.png')
+        features = get_vgg19_features('dummy.png')
+    else:
+        if output_type == 'probs':
+            bin_size = float((feature_type.split('_'))[-1])
+            if bin_size not in [0.001, 0.005, 0.010]:
+                logging.error('Wrong Bin size given for probabilities. Give either 0.001, 0.005 or 0.010')
+                sys.exit()
+            features = get_binned_features_for_probs(probs, bin_size)
+        elif output_type == 'ranks':
+            bin_size = int((feature_type.split('_'))[-1])
+            if bin_size not in [10, 50, 100]:
+                logging.error('Wrong Bin size given for ranks. Give either 10, 50 or 100')
+                sys.exit()
+            features = get_binned_features_for_ranks(probs, max_vocab_size, bin_size)
+
 
     os.remove("dummy.png")
-
     return features
 
 
@@ -129,6 +143,10 @@ def probs_create_plots(probs, name):
     plt.close('all')
 
 def get_vgg19_features(img_path):
+    """
+    :param img_path: path of image for which we want VGG-19 based features
+    :return: features from flatten layer
+    """
     base_model = VGG19(weights='imagenet')
     model = Model(inputs=base_model.input, outputs=base_model.get_layer('flatten').output)
     img = image.load_img(img_path, target_size=(224, 224))
@@ -137,3 +155,41 @@ def get_vgg19_features(img_path):
     out = preprocess_input(out)
     flatten = model.predict(out)
     return list(flatten[0])
+
+def get_binned_features_for_ranks(features, max_size, bin_size=50):
+    """
+    :param features: ranks of input text
+    :param max_size: max rank achievable
+    :param bin_size: size of bins
+    :return: binned features
+    """
+    feature_list = []
+    for val in range(bin_size, max_size, bin_size):
+        range_min = val - bin_size
+        range_max = val
+        count = 0
+        for feature in features:
+            if (feature >= range_min) and (feature < range_max):
+                count+=1
+        feature_list.append(count/len(features))
+    return feature_list
+
+def get_binned_features_for_probs(features, bin_size=0.001):
+    """
+    :param features: probabilities of input text
+    :param bin_size: size of bin
+    :return: binned features
+    """
+    feature_list = []
+    val = bin_size
+    while val <= 1:
+        range_min = val - bin_size
+        range_max = val
+        count = 0
+        for feature in features:
+            if (feature >= range_min) and (feature < range_max):
+                count+=1
+        feature_list.append(count/len(features))
+        val += bin_size
+
+    return feature_list
