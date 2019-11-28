@@ -71,7 +71,7 @@ def main():
     if text == '':
         text = utils.read_file(file_path)
 
-    evaluate_text(text, dataset_type, language_model, language_model_output_type, feature_type, classifier)
+    return evaluate_text(text, dataset_type, language_model, language_model_output_type, feature_type, classifier)
 
 
 if __name__ == '__main__':
