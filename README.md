@@ -13,69 +13,49 @@ To run this project you should have a disk space of 17GB and python 3 installed.
 
 Following are the steps you need to follow to successfully run this.
 
-First clone this repo
+First install all required libraries
+
+```
+pip3 install -r requirements.txt
+```
+
+Then clone this repo
 
 ```
 git clone <repo name>
 ```
 
-Then download pre-trained models and GPT-2 345M model and put them in the working directory. These folders go by the name 
+Then download pre-trained models and GPT-2 345M model and put them in the working directory. These folders go by the name 'models' and 'output' 
 
+To download models, use the following link
 ```
-until finished
-```
-
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+https://www.dropbox.com/s/rqzqrl4fpdyjmam/models.zip?dl=0
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
+To download output, use the following link
 ```
-Give an example
+https://www.dropbox.com/s/5gputd5v1apfjkb/output.zip?dl=0
 ```
 
-## Deployment
+## Running the tool
 
-Add additional notes about how to deploy this on a live system
+In order to run the tool, simply run the following command
+
+```
+python3 app.py
+```
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* [Flask](http://flask.palletsprojects.com/en/1.1.x/) - The web framework used
+* [Scikit Learn](https://scikit-learn.org/stable/) - Machine Learning library used
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License.
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc 
+* [Sb Admin 2](https://startbootstrap.com/themes/sb-admin-2/) - Used this template for Front-end
+* [GLTR](https://github.com/HendrikStrobelt/detecting-fake-text) - Code for GPT-2 and BERT used as Language Models
+
