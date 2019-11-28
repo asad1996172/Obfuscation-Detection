@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ObfsPrints</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{{ url_for('static',filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{ url_for('static',filename='css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+
+            <div>ObfsPrints</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="/">
+
+                <span>Dashboard</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/tables">
+
+                <span>Result Tables</span></a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <h3 class="m-0 font-weight-bold text-primary">Obfuscation Detection Tool</h3>
+
+
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    <!--                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i-->
+                    <!--                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+                </div>
+
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h3 class="m-0 font-weight-bold text-primary">Choose pre-trained model for prediction</h3>
+                    <!--                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i-->
+                    <!--                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+                </div>
+
+                <!-- Content Row -->
+                <form class="form-group" style="text-align:center;" method="POST" action="/process">
+                    <div class="row">
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <label>Choose Dataset</label>
+                            <select class="btn btn-primary selectpicker form-control" data-style="btn-primary"
+                                    name="dataset">
+
+                                <option  value="ebg_obfuscated">EBG Obfuscated</option>
+                                <option value="ebg_evaded">EBG Evaded</option>
+                                <option value="blogs_obfuscated">BLOG Obfuscated</option>
+                                <option value="blogs_evaded">BLOG Evaded</option>
+
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <label>Choose Language Model</label>
+                            <select class="btn btn-primary selectpicker form-control" data-style="btn-primary"
+                                    name="lm">
+
+                                <option value="bert_base">BERT base</option>
+                                <option value="bert_large">BERT large</option>
+                                <option value="gpt2_117m">GPT-2 117M</option>
+                                <option value="gpt2_345m">GPT-2 345M</option>
+
+
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <label>Choose Feature Set</label>
+                            <select class="btn btn-primary selectpicker form-control" data-style="btn-primary"
+                                    name="feature_set">
+                                <optgroup label="Probabilities">
+                                    <option value="probs_vgg19">Probabilities VGG-19</option>
+                                    <option value="probs_bins_0.001">Bins 0.001</option>
+                                    <option value="probs_bins_0.005">Bins 0.005</option>
+                                    <option value="probs_bins_0.010">Bins 0.010</option>
+                                </optgroup>
+                                <optgroup label="Ranks">
+                                    <option value="ranks_vgg19">Ranks VGG-19</option>
+                                    <option value="ranks_bins_10">Bins 10</option>
+                                    <option value="ranks_bins_50">Bins 50</option>
+                                    <option value="ranks_bins_100">Bins 100</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        </select>
+
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <label>Choose Classifier</label>
+                            <select class="btn btn-primary selectpicker form-control" data-style="btn-primary"
+                                    name="classifier">
+                                <option  value="svm">SVM</option>
+                                <option value="rfc">RFC</option>
+                                <option  value="knn">KNN</option>
+                                <option  value="ann">ANN</option>
+                                <option  value="gnb">GNB</option>
+
+                            </select>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Enter Text Here</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+
+                                <textarea class="form-control rounded-0" id="exampleFormControlTextarea1"
+                                          name="input_text"
+                                          rows="5"></textarea>
+                                    <br/>
+                                    <input type="submit" value="Detect Obfuscation"
+                                           class="bg-primary text-white shadow btn btn-secondary" style="color:white;">
+
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie Chart -->
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Instructions</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <p>EBG dataset comprises of scholarly articles wheras BLOG dataset comprises of blogs
+                    written on blogger.com. When choosing the pre-trained model, first analyze how
+                    similar the input text is to EBG dataset or BLOG dataset. Other than this, we found
+                    that BERT base with probabilities as langauge mnodel output, used with VGG-19
+                    features with ANN as classifier performs the best across all 4 of our datasets.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <div class="shadow">
+            <div class="card-body border-bottom-danger">
+                <b>Prediction:</b>
+                <div class="large" style="font-size: large;">{{ message }} <div style="color:#e74a3b;">{{ pred }}</div> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Obfuscation Detection Tool</span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+
+
+<!-- Bootstrap core JavaScript-->
+<link href="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}">
+<link href="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}">
+
+
+<!-- Core plugin JavaScript-->
+<link href="{{ url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js') }}">
+
+<!-- Custom scripts for all pages-->
+<link href="{{ url_for('static',filename='js/sb-admin-2.min.js') }}">
+
+
+<!-- Page level plugins -->
+<link href="{{ url_for('static',filename='vendor/chart.js/Chart.min.js') }}">
+
+
+<!-- Page level custom scripts -->
+<link href="{{ url_for('static',filename='js/demo/chart-area-demo.js') }}">
+<!--<script src="js/demo/chart-area-demo.js"></script>-->
+<link href="{{ url_for('static',filename='js/demo/chart-pie-demo.js') }}">
+<!--<script src="js/demo/chart-pie-demo.js"></script>-->
+
+</body>
+
+</html>
