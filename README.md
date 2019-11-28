@@ -16,7 +16,7 @@ Following are the steps you need to follow to successfully run this.
 First clone this repo
 
 ```
-git clone https://github.com/asad1996172/ObfsPrints----Obfuscation-Detection
+git clone <repo name>
 ```
 
 Then download pre-trained models and GPT-2 345M model and put them in the working directory. These folders go by the name 
@@ -25,7 +25,6 @@ Then download pre-trained models and GPT-2 345M model and put them in the workin
 until finished
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 

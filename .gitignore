@@ -1,3 +1,5 @@
 #Ignore folder named models
 models/
 output/
+models.zip
+output.zip
