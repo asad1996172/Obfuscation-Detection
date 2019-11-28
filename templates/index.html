@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <title>ObfsPrints</title>
 
     <!-- Custom fonts for this template-->
@@ -23,7 +23,7 @@
 </head>
 
 <body id="page-top">
-
+<!--<div id="loading" style="cursor: wait; height: 35px;width: 35px;display:none;"><img src="{{ url_for('static',filename='loadingimage.gif') }}" alt="" />Loading!</div>-->
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -52,7 +52,6 @@
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
-
 
 
     </ul>
@@ -101,7 +100,7 @@
                             <select class="btn btn-primary selectpicker form-control" data-style="btn-primary"
                                     name="dataset">
 
-                                <option  value="ebg_obfuscated">EBG Obfuscated</option>
+                                <option value="ebg_obfuscated">EBG Obfuscated</option>
                                 <option value="ebg_evaded">EBG Evaded</option>
                                 <option value="blogs_obfuscated">BLOG Obfuscated</option>
                                 <option value="blogs_evaded">BLOG Evaded</option>
@@ -145,11 +144,11 @@
                             <label>Choose Classifier</label>
                             <select class="btn btn-primary selectpicker form-control" data-style="btn-primary"
                                     name="classifier">
-                                <option  value="svm">SVM</option>
+                                <option value="svm">SVM</option>
                                 <option value="rfc">RFC</option>
-                                <option  value="knn">KNN</option>
-                                <option  value="ann">ANN</option>
-                                <option  value="gnb">GNB</option>
+                                <option value="knn">KNN</option>
+                                <option value="ann">ANN</option>
+                                <option value="gnb">GNB</option>
 
                             </select>
                         </div>
@@ -175,7 +174,7 @@
 
                                 <textarea class="form-control rounded-0" id="exampleFormControlTextarea1"
                                           name="input_text"
-                                          rows="5"></textarea>
+                                          rows="5">{{ text }}</textarea>
                                     <br/>
                                     <input type="submit" value="Detect Obfuscation"
                                            class="bg-primary text-white shadow btn btn-secondary" style="color:white;">
@@ -211,7 +210,9 @@
         <div class="shadow">
             <div class="card-body border-bottom-danger">
                 <b>Prediction:</b>
-                <div class="large" style="font-size: large;">{{ message }} <div style="color:#e74a3b;">{{ pred }}</div> </div>
+                <div class="large" style="font-size: large;">{{ message }}
+                    <div style="color:#e74a3b;">{{ pred }}</div>
+                </div>
             </div>
         </div>
     </div>
@@ -244,7 +245,6 @@
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
-
 
 
 <!-- Bootstrap core JavaScript-->

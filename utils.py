@@ -2,7 +2,10 @@ import os
 import io
 import pickle
 import GLTR
+import matplotlib
+matplotlib.use('Agg')
 from matplotlib import pyplot as plt
+os.environ['KERAS_BACKEND'] = 'theano'
 from keras.applications.vgg19 import VGG19
 from keras.preprocessing import image
 from keras.applications.vgg19 import preprocess_input
@@ -10,6 +13,8 @@ from keras.models import Model
 import numpy as np
 import logging
 import sys
+
+
 
 def get_ranks_and_probs(payloads_list):
     """
@@ -107,7 +112,7 @@ def extract_features(text, language_model, output_type, feature_type):
             if bin_size not in [10, 50, 100]:
                 logging.error('Wrong Bin size given for ranks. Give either 10, 50 or 100')
                 sys.exit()
-            features = get_binned_features_for_ranks(probs, max_vocab_size, bin_size)
+            features = get_binned_features_for_ranks(ranks, max_vocab_size, bin_size)
 
 
     os.remove("dummy.png")

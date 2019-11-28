@@ -17,7 +17,8 @@ app = Flask(__name__)
 def main_dash():
     message = 'Give text to get prediction'
     pred = ''
-    return render_template('index.html', message = message, pred = pred)
+    text = ''
+    return render_template('index.html', message = message, pred = pred, text = text)
 
 
 @app.route('/process', methods=['POST'])
@@ -35,7 +36,7 @@ def process():
     pred = predict.evaluate_text(input_text, dataset, lm, lmot, feature_type, classifier)
     print('The given text is: ', pred)
     message = 'The given text was: '
-    return render_template('index.html', message=message, pred=pred)
+    return render_template('index.html', message=message, pred=pred, text = input_text)
 
 @app.route('/tables')
 def results_tables():
