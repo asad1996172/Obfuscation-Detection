@@ -12,10 +12,98 @@ from keras.applications.vgg19 import preprocess_input
 from keras.models import Model
 import numpy as np
 import logging
+from shutil import copyfile
 import sys
+import pandas as pd
+
+def read_all_results_file():
+    all_res_path = '/home/amahmood1/Dropbox/Obfuscation_Detection/Obfuscation_Detection/scripts/old_scripts/all_results.csv'
+    all_data = pd.read_csv(all_res_path, index_col=False)
+    all_data.Feature = all_data.Feature.replace('Bins0.005size_output', 'Bins 0.005')
+    all_data.Feature = all_data.Feature.replace('Bins0.010size_output', 'Bins 0.010')
+    all_data.Feature = all_data.Feature.replace('Bins0.001size_output', 'Bins 0.001')
+    all_data.Feature = all_data.Feature.replace('sorted_VGG19_features_output', 'VGG19')
+    all_data.Feature = all_data.Feature.replace('Bins10size_output', 'Bins 10')
+    all_data.Feature = all_data.Feature.replace('Bins50size_output', 'Bins 50')
+    all_data.Feature = all_data.Feature.replace('Bins100size_output', 'Bins 100')
+
+    all_data.drop(columns=['Feature_type', 'MCC'], inplace=True)
+
+    all_data.to_csv('all_results.csv', index=None)
+
+def get_list_of_files(dir_name):
+    """
+    Takes in the directory name and outputs all the files in sub directories
+    """
+
+    list_of_files = os.listdir(dir_name)
+    all_files = list()
+    # Iterate over all the entries
+    for entry in list_of_files:
+        # Create full path
+        full_path = os.path.join(dir_name, entry)
+        # If entry is a directory then get the list of files in this directory
+        if os.path.isdir(full_path):
+            all_files = all_files + get_list_of_files(full_path)
+        else:
+            all_files.append(full_path)
+
+    return all_files
 
 
+def read_model_files():
+    """
+    Transfers pre-trained models in the tools directory
+    """
 
+    models_old_path = sys.argv[1]
+
+    all_model_files = []
+    all_files = get_list_of_files(models_old_path)
+    for file in all_files:
+        if '.pkl' in file:
+            all_model_files.append(file)
+
+    for model_file in all_model_files:
+        orig_model_file = model_file
+        model_file = model_file.split('/')[5:]
+
+        if model_file[0] == 'amt_obfuscated':
+            model_file[0] = 'ebg_obfuscated'
+        elif model_file[0] == 'amt_evaded':
+            model_file[0] = 'ebg_evaded'
+
+        if model_file[3] == 'nn':
+            model_file[3] = 'ann'
+        elif model_file[3] == 'bayesian':
+            model_file[3] = 'gnb'
+
+        if model_file[4] == 'sorted_VGG19_features.pkl':
+            model_file[4] = 'vgg19.pkl'
+
+        else:
+            if model_file[2] == 'ranks':
+                if model_file[4] == 'Bins10size.pkl':
+                    model_file[4] = 'bins_10.pkl'
+                elif model_file[4] == 'Bins50size.pkl':
+                    model_file[4] = 'bins_50.pkl'
+                elif model_file[4] == 'Bins100size.pkl':
+                    model_file[4] = 'bins_100.pkl'
+            elif model_file[2] == 'probs':
+                if model_file[4] == 'Bins10size.pkl':
+                    model_file[4] = 'bins_0.001.pkl'
+                elif model_file[4] == 'Bins50size.pkl':
+                    model_file[4] = 'bins_0.005.pkl'
+                elif model_file[4] == 'Bins100size.pkl':
+                    model_file[4] = 'bins_0.010.pkl'
+
+        new_model_file_name = ('_'.join(model_file)).lower()
+
+        print(orig_model_file)
+        print(new_model_file_name)
+        copyfile(orig_model_file, 'models/' + new_model_file_name)
+
+# read_model_files()
 def get_ranks_and_probs(payloads_list):
     """
     :param payloads_list: list containing output from the language model
