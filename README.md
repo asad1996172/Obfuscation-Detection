@@ -29,7 +29,7 @@ Then download pre-trained models and GPT-2 345M model and put them in the workin
 
 To download models, use the following link
 ```
-https://www.dropbox.com/s/rqzqrl4fpdyjmam/models.zip?dl=0
+https://www.dropbox.com/s/nikke8387y9smtp/models.zip?dl=0
 ```
 
 To download output, use the following link
