@@ -13,16 +13,16 @@ To run this project you should have a disk space of 17GB and python 3 installed.
 
 Following are the steps you need to follow to successfully run this.
 
-First install all required libraries
-
-```
-pip3 install -r requirements.txt
-```
-
-Then clone this repo
+First clone this repo
 
 ```
 git clone <repo name>
+```
+
+Then install all required libraries
+
+```
+pip3 install -r requirements.txt
 ```
 
 Then download pre-trained models and GPT-2 345M model and put them in the working directory. These folders go by the name 'models' and 'output' 
