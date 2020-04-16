@@ -50,9 +50,6 @@ python3 app.py
 * [Flask](http://flask.palletsprojects.com/en/1.1.x/) - The web framework used
 * [Scikit Learn](https://scikit-learn.org/stable/) - Machine Learning library used
 
-## License
-
-This project is licensed under the MIT License.
 
 ## Acknowledgments
 
