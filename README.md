@@ -1,6 +1,9 @@
 # ObfsPrints: Obfuscation Detection Tool
 ObfsPrints takes text or text file's path as input and using its 640 unique pre-trained models, tells if the input text was written by humans or automated authorship obfuscation tools.
 
+## Demo
+![Tool Demo](https://github.com/asad1996172/Obfuscation-Detection/blob/master/out.gif)
+
 ## Getting Started
 
 The following instructions will get you a copy of the project up and running on your local machine for testing purposes.
