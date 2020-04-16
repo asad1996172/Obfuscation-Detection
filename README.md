@@ -16,7 +16,7 @@ Following are the steps you need to follow to successfully run this.
 First clone this repo
 
 ```
-git clone <repo name>
+git clone https://github.com/asad1996172/Obfuscation-Detection
 ```
 
 Then install all required libraries
