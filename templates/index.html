@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-    <title>ObfsPrints</title>
+    <title>Obfuscation Detection</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ url_for('static',filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"
@@ -33,7 +33,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
 
-            <div>ObfsPrints</div>
+            <div>ObfsDetection</div>
         </a>
 
         <!-- Divider -->
@@ -48,7 +48,7 @@
         <li class="nav-item active">
             <a class="nav-link" href="/tables">
 
-                <span>Result Tables</span></a>
+                <span>Results Table</span></a>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -108,7 +108,7 @@
                             </select>
                         </div>
                         <div class="col-xl-2 col-md-6 mb-4">
-                            <label>Choose Language Model</label>
+                            <label>Choose LM</label>
                             <select class="btn btn-primary selectpicker form-control" data-style="btn-primary"
                                     name="lm">
 
@@ -125,7 +125,7 @@
                             <select class="btn btn-primary selectpicker form-control" data-style="btn-primary"
                                     name="feature_set">
                                 <optgroup label="Probabilities">
-                                    <option value="probs_vgg19">Probabilities VGG-19</option>
+                                    <option value="probs_vgg19">Probs VGG-19</option>
                                     <option value="probs_bins_0.001">Bins 0.001</option>
                                     <option value="probs_bins_0.005">Bins 0.005</option>
                                     <option value="probs_bins_0.010">Bins 0.010</option>
@@ -181,7 +181,17 @@
 
 
                 </form>
-
+                <hr>
+                <div class="col-lg-12 mb-4">
+                    <div class="shadow">
+                        <div class="card-body border-bottom-danger">
+                            <b>Prediction:</b>
+                            <div class="large" style="font-size: large;">{{ message }}
+                                <div style="color:#e74a3b;">{{ pred }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -201,18 +211,6 @@
                     similar the input text is to EBG dataset or BLOG dataset. Other than this, we found
                     that BERT base with probabilities as langauge mnodel output, used with VGG-19
                     features with ANN as classifier performs the best across all 4 of our datasets.</p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12 mb-4">
-        <div class="shadow">
-            <div class="card-body border-bottom-danger">
-                <b>Prediction:</b>
-                <div class="large" style="font-size: large;">{{ message }}
-                    <div style="color:#e74a3b;">{{ pred }}</div>
-                </div>
             </div>
         </div>
     </div>
