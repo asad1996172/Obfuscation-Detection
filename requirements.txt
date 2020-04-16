@@ -129,7 +129,7 @@ murmurhash==0.28.0
 nbconvert==5.4.0
 nbformat==4.4.0
 networkx==2.2
-nltk==3.3
+nltk==3.4.5
 notebook==5.7.0
 numba==0.46.0
 numpy==1.15.4
