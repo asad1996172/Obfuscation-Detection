@@ -1,5 +1,5 @@
-# ObfsPrints: Obfuscation Detection Tool
-ObfsPrints takes text or text file's path as input and using its 640 unique pre-trained models, tells if the input text was written by humans or automated authorship obfuscation tools.
+Automated Authorship Obfuscation Detection
+Authorship attributionaims to identify the au-thor  of  a  text  based  on  stylometric  analysis.Authorship  obfuscation,  on  the  other  hand,aims to protect against authorship attributionby modifying a text’s style.  In this paper, weevaluate the stealthiness of state-of-the-art au-thorship obfuscation approaches using neurallanguage models in an adversarial setting.  Anobfuscator isstealthyto the extent that an ad-versary finds it challenging to detect whetherits output document is original or not - a deci-sion that is key to an adversary.  We show thatthe leading authorship obfuscation approachesare not stealthy as the output documents can beidentified with average F1 score of 0.871. Thereason for this weakness is that the obfusca-tors degrade text smoothness in a predictable,i.e., detectable manner.  Our results highlightthe need to develop stealthy authorship obfus-cation approaches that better protect an authorseeking anonymity.
 
 ## Demo
 ![Tool Demo](https://github.com/asad1996172/Obfuscation-Detection/blob/master/final_demo.gif)
