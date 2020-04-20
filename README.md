@@ -1,4 +1,4 @@
-# Abstract
+# Automated Authorship Obfuscation Detection
 Authorship attribution aims to identify the author  of  a  text  based  on  stylometric  analysis. Authorship  obfuscation,  on  the  other  hand, aims to protect against authorship attribution by modifying a text’s style.  In this paper, we evaluate the stealthiness of state-of-the-art authorship obfuscation approaches using neural language models in an adversarial setting.  An obfuscator is stealthy to the extent that an adversary finds it challenging to detect whether its output document is original or not - a decision that is key to an adversary.  We show that the leading authorship obfuscation approaches are not stealthy as the output documents can be identified with average F1 score of 0.871. The reason for this weakness is that the obfuscators degrade text smoothness in a predictable i.e., detectable manner.  Our results highlight the need to develop stealthy authorship obfuscation approaches that better protect an author seeking anonymity.
 
 ## Demo
