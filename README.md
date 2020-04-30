@@ -56,8 +56,9 @@ Following are the three automated authorship obfsucation systems used for experi
 3) Author Masking by Sentence Transformation [[paper]](http://ceur-ws.org/Vol-1866/paper_170.pdf) [[code]](https://github.com/asad1996172/Obfuscation-Systems/tree/master/Document%20Simplification%20PAN17)
 
 Following are the URLs for data used in Obfuscation Detection experiments.
-For EBG dataset: https://www.dropbox.com/sh/snnowhyjo1awtfu/AACAurUwthDFkjKOdNUvttwRa?dl=0
-For BLOGs dataset: https://www.dropbox.com/sh/qst55smvaktsfy7/AADgwh6J324Rk1CgtlFQGmAfa?dl=0
+
+For EBG dataset: ```https://www.dropbox.com/sh/snnowhyjo1awtfu/AACAurUwthDFkjKOdNUvttwRa?dl=0```
+For BLOGs dataset: ```https://www.dropbox.com/sh/qst55smvaktsfy7/AADgwh6J324Rk1CgtlFQGmAfa?dl=0```
 
 ## Built With
 
