@@ -48,6 +48,17 @@ In order to run the tool, simply run the following command
 python3 app.py
 ```
 
+## Resources
+Following are the three automated authorship obfsucation systems used for experiments in our paper.
+
+1) A Girl Has No Name: Automated Authorship Obfuscation using Mutant-X [[paper]](https://petsymposium.org/2019/files/papers/issue4/popets-2019-0058.pdf) [[code]](https://github.com/asad1996172/Mutant-X)
+2) The Case for Being Average: A Mediocrity Approach to Style Masking and Author Obfuscation [[paper]](https://arxiv.org/pdf/1707.03736v2.pdf) [[code]](https://bitbucket.org/pan2016authorobfuscation/authorobfuscation/src/master/)
+3) Author Masking by Sentence Transformation [[paper]](http://ceur-ws.org/Vol-1866/paper_170.pdf) [[code]](https://github.com/asad1996172/Obfuscation-Systems/tree/master/Document%20Simplification%20PAN17)
+
+Following are the URLs for data used in Obfuscation Detection experiments.
+For EBG dataset: https://www.dropbox.com/sh/snnowhyjo1awtfu/AACAurUwthDFkjKOdNUvttwRa?dl=0
+For BLOGs dataset: https://www.dropbox.com/sh/qst55smvaktsfy7/AADgwh6J324Rk1CgtlFQGmAfa?dl=0
+
 ## Built With
 
 * [Flask](http://flask.palletsprojects.com/en/1.1.x/) - The web framework used
