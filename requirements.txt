@@ -184,7 +184,7 @@ pytorch-pretrained-bert==0.6.1
 pytz==2018.5
 PyWavelets==1.0.1
 pywsd==1.1.7
-PyYAML==5.1.1
+PyYAML==5.4
 pyzmq==17.1.2
 qtconsole==4.4.1
 quiver==0.1
