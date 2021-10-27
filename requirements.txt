@@ -41,7 +41,7 @@ cymem==1.31.2
 Cython==0.27.3
 cytoolz==0.9.0.1
 daemonocle==1.0.1
-dask==0.20.1
+dask==2021.10.0
 decorator==4.3.0
 -e git+https://github.com/marcoancona/DeepExplain.git@4ac3ba6ac3801ec72e137c448c879e3a223b48d4#egg=deepexplain
 defusedxml==0.5.0
