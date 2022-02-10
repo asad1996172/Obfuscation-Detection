@@ -46,7 +46,7 @@ decorator==4.3.0
 -e git+https://github.com/marcoancona/DeepExplain.git@4ac3ba6ac3801ec72e137c448c879e3a223b48d4#egg=deepexplain
 defusedxml==0.5.0
 dill==0.2.8.2
-Django==2.2.3
+Django==2.2.27
 docopt==0.6.2
 docutils==0.14
 edit-distance==1.0.1
