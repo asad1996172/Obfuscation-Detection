@@ -21,7 +21,7 @@ bleach==1.5.0
 boto==2.49.0
 boto3==1.9.0
 botocore==1.12.0
-bottle==0.12.17
+bottle==0.12.20
 bottle-websocket==0.2.9
 box2d-py==2.3.5
 bs4==0.0.1
