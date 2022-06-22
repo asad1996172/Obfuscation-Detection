@@ -132,7 +132,7 @@ networkx==2.2
 nltk==3.3
 notebook==5.7.0
 numba==0.46.0
-numpy==1.15.4
+numpy==1.22.0
 olefile==0.44
 openapi-spec-validator==0.2.7
 openfile==0.0.7
